@@ -6,6 +6,8 @@ from fire import Fire
 from jinja2 import Template
 
 
+__version__ = '0.0.1'
+
 def scan_dir(dir_):
     for file in glob(f"{path.join(dir_)}/*.config"):
         yield file
@@ -57,8 +59,8 @@ if __name__ == "__main__":
     Fire({
         'dir': run_dir,
         'file': run_file,
+        'version': lambda: __version__
     })
 
-    # stdio output for single file or write output
-    # black format option
+    # black format option (or pipe to black for stdio)
     # lint option, and optionally fail on write if lint fails
