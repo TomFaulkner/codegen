@@ -46,12 +46,16 @@ def proc_file(name: str, stdio=False):
             f.write(render)
 
 
-def run_dir(dir_:str):
+def run_dir(dir_: str):
     for file in scan_dir(dir_):
         proc_file(file)
 
 
-def run_file(file:str):
+def run_file(file: str):
+    proc_file(file)
+
+
+def preview_file(file: str):
     proc_file(file, stdio=True)
 
 
@@ -59,6 +63,7 @@ if __name__ == "__main__":
     Fire({
         'dir': run_dir,
         'file': run_file,
+        'preview_file': preview_file,
         'version': lambda: __version__
     })
 
